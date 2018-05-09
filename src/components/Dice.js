@@ -6,16 +6,20 @@ import '../styles/Dice.scss'
 const mapStateToProps = state => {
   return {
     firstDice: state.firstDice,
-    secondDice: state.secondDice
+    secondDice: state.secondDice,
+    charLocation: state.charLocation
   }
 }
 
 const Dice = props => {
+  /**
+   * Return a random number between 1 and 6
+   */
   const getRandNum = () => Math.ceil(Math.random() * 6)
 
-  const setDice = () => {
+  const setDiceAndCharLocation = () => {
     return {
-      type: 'SET_DICE',
+      type: 'SET_DICE_AND_CHAR_LOCATION',
       firstDice: getRandNum(),
       secondDice: getRandNum()
     }
@@ -24,7 +28,7 @@ const Dice = props => {
   return (
     <div
       className='dice'
-      onClick={el => props.dispatch(setDice())}
+      onClick={el => props.dispatch(setDiceAndCharLocation())}
     >
       <h2>{ props.firstDice }</h2>
       <h2>{ props.secondDice }</h2>
